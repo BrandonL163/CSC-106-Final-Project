@@ -1,1 +1,199 @@
+var currentScene = 0;
 
+var drawBitmojiHead = function (xPos, yPos, bitmojiHeight) // function to draw bitmoji head
+{
+noStroke();
+fill(255,224,189);
+ellipse(xPos,yPos,bitmojiHeight/150*83,bitmojiHeight/150*100); //head
+fill(255, 255, 255);
+arc(xPos+(bitmojiHeight/150*42),yPos+(bitmojiHeight/150*37),bitmojiHeight/150*20,bitmojiHeight/150*55,bitmojiHeight/150*0,bitmojiHeight/150*361); // right chisel
+arc(xPos-(bitmojiHeight/150*42),yPos+(bitmojiHeight/150*37),bitmojiHeight/150*20,bitmojiHeight/150*55,bitmojiHeight/150*0,bitmojiHeight/150*361); //left chisel
+fill(242, 230, 230); //hat color
+quad(xPos-(bitmojiHeight/150*44),yPos,xPos-(bitmojiHeight/150*37),yPos-(bitmojiHeight/150*32),xPos-(bitmojiHeight/150*10),yPos-(bitmojiHeight/150*50),xPos-(bitmojiHeight/150*30),yPos-(bitmojiHeight/150*12)); //left hat
+quad(xPos+(bitmojiHeight/150*49),yPos,xPos+(bitmojiHeight/150*35),yPos-(bitmojiHeight/150*32),xPos+(bitmojiHeight/150*13),yPos-(bitmojiHeight/150*50),xPos+(bitmojiHeight/150*35),yPos-(bitmojiHeight/150*12)); //right hat
+rect(xPos-(bitmojiHeight/150*40),yPos-(bitmojiHeight/150*20),bitmojiHeight/150*82,bitmojiHeight/150*13,bitmojiHeight/150*10); //hat strap
+ellipse(xPos,yPos-(bitmojiHeight/150*40),bitmojiHeight/150*40,bitmojiHeight/150*18); //top head
+fill(184, 151, 120);
+rect(xPos-(bitmojiHeight/150*24),yPos-(bitmojiHeight/150*32),bitmojiHeight/150*50,bitmojiHeight/150*15); // hair in hat
+fill(61, 103, 29);
+ellipse(xPos-(bitmojiHeight/150*15),yPos,bitmojiHeight/150*15,bitmojiHeight/150*10); //left eye    
+fill(61,103,29); // eyes
+ellipse(xPos+(bitmojiHeight/150*15),yPos,bitmojiHeight/150*15,bitmojiHeight/150*10); // eye color
+fill(255,224,189); //nose color
+stroke(0, 0, 0); // nose outline
+bezier(xPos,yPos,xPos+(bitmojiHeight/150*21),yPos+(bitmojiHeight/150*22),xPos-(bitmojiHeight/150*8),yPos+(bitmojiHeight/150*20),xPos-(bitmojiHeight/150*4),yPos+(bitmojiHeight/150*15)); // nose
+arc(xPos+(bitmojiHeight/150*2),yPos+(bitmojiHeight/150*25),bitmojiHeight/150*30,bitmojiHeight/150*13,1,180);
+};
+
+var drawBitmojiBody = function (xPos, yPos, bitmojiHeight){
+fill(0, 0, 0);
+rect(xPos-(bitmojiHeight/150*50),yPos+(bitmojiHeight/150*50),bitmojiHeight/150*100,bitmojiHeight/150*50);
+rect(xPos-(bitmojiHeight/150*50),yPos+(bitmojiHeight/150*40),bitmojiHeight/150*20,bitmojiHeight/150*20);
+rect(xPos+(bitmojiHeight/150*30),yPos+(bitmojiHeight/150*40),bitmojiHeight/150*20,bitmojiHeight/150*20);
+fill(255, 255, 255);
+textSize(24);
+text("AC",xPos-(bitmojiHeight/150*17),yPos+(bitmojiHeight/150*65),bitmojiHeight/150*60,bitmojiHeight/150*60);
+};
+
+var drawBitmoji = function(xPos, yPos, bitmojiHeight){ // function to draw bitmoji with 3 variables
+    drawBitmojiHead(xPos, yPos, bitmojiHeight);
+    drawBitmojiBody(xPos, yPos, bitmojiHeight);
+};
+
+var drawBitmoji1 = function(xPos,yPos,bheight){
+    var drawBitmojiHead1 = function(){
+        noStroke();
+        fill(255, 244, 189);
+        ellipse(xPos+(bheight/100*0),yPos+(bheight/100*0),bheight/100*83,bheight/100*100);
+        fill(255, 255, 255);
+        arc(xPos-(bheight/100*42),yPos+(bheight/100*37),bheight/100*28,bheight/100*55,0,361);
+        arc(xPos+(bheight/100*42), yPos+(bheight/100*37),bheight/100*28,bheight/100*55,0,361         );
+        fill(133, 24, 24);
+        quad(xPos-(bheight/100*50),yPos-(bheight/100*10),xPos-(bheight/100*37),yPos-(bheight         /100*32),xPos-(bheight/100*10),yPos-(bheight/100*50),xPos-(bheight/100*30),yPos              -(bheight/100*1));
+        quad(xPos+(bheight/100*49),yPos-(bheight/100*2),xPos+(bheight/100*34),yPos-(bheight          /100*32),xPos+(bheight/100*13),yPos-(bheight/100*50),xPos+(bheight/100*35),yPos              +(bheight/100*0));
+        ellipse(xPos+(bheight/100*0),yPos-(bheight/100*25),bheight/100*62,bheight/100*50);
+        stroke(0,0,0);
+        fill(255, 244, 189);
+        ellipse(xPos-(bheight/100*11),yPos+(bheight/100*10),bheight/100*19,bheight/100*14);
+        ellipse(xPos+(bheight/100*14),yPos+(bheight/100*10),bheight/100*19,bheight/100*14);
+        line(xPos-(bheight/100*1),yPos+(bheight/100*10),xPos+(bheight/100*3),yPos+(bheight           /100*10));
+        fill(115,23,23);
+        ellipse(xPos-(bheight/100*10),yPos+(bheight/100*10),bheight/100*6,bheight/100*4);
+        ellipse(xPos+(bheight/100*17),yPos+(bheight/100*10),bheight/100*6,bheight/100*4);
+        fill(255, 244, 189);
+        bezier(xPos+(bheight/100*0),yPos+(bheight/100*13),xPos+(bheight/100*21),yPos+(bheight         /100*19),xPos-(bheight/100*8),yPos+(bheight/100*28),xPos-(bheight/100*4),yPos                +(bheight/100*24));
+        fill(255,255,255);
+        arc(xPos+(bheight/100*2),yPos+(bheight/100*29),bheight/100*30,bheight/100*13,1,180);
+        line(xPos-(bheight/100*14),yPos+(bheight/100*28),xPos+(bheight/100*16),yPos+(bheight         /100*28));
+    };
+   
+    var drawBitmojiBody1 = function(){
+        fill(0, 0, 0);
+        ellipse(xPos+(bheight/100*0),yPos+(bheight/100*92),bheight/100*66,bheight/100*82);
+        rect(xPos+(bheight/100*25),yPos+(bheight/100*63),bheight/100*10,bheight/100*66               ,bheight/100*100);
+        rect(xPos-(bheight/100*40),yPos+(bheight/100*63),bheight/100*10,bheight/100*66               ,bheight/100*100);
+        fill(255, 255, 255);
+        text("B",xPos-(bheight/100*11),yPos+(bheight/100*79),bheight/100*1000000000,bheight          /100*10000000);
+        text("L",xPos+(bheight/100*2),yPos+(bheight/100*79),bheight/100*1000000000,bheight           /100*10000000);
+        fill(205, 212, 144);
+        ellipse(xPos+(bheight/100*0),yPos-(bheight/100*32),bheight/100*59,bheight/100*47);
+        ellipse(xPos+(bheight/100*0),yPos-(bheight/100*20),bheight/100*100,bheight/100*20);
+    };
+drawBitmojiHead1();
+drawBitmojiBody1();
+
+
+}; // brandon bitmoji function
+
+var Button = function (config) { //constructor function for buttons
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 150;
+    this.height = config.height || 50;
+    this.label = config.label || "Click";
+    this.onClick = config.onClick || function() {};
+    this.color = config.color || color(25, 222, 22);
+};
+
+Button.prototype.draw = function() { // function to draw button
+    fill(this.color);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+
+Button.prototype.isMouseInside = function() { // function to check that mouse is inside the button
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+
+Button.prototype.handleMouseClick = function() { // function to make click work when it is inside the button
+    if (this.isMouseInside()) {
+        this.onClick();
+    }
+};
+
+var rockButton = new Button({ // fucntion to create the button on the start screen
+    x: 250,
+    y: 100,
+    label: "Rock",
+    onClick: function() {
+        image(getImage("cute/Rock"),135,150,100,100);
+        currentScene = 1;
+    }
+});
+
+var starButton = new Button({ // fucntion to create the button on the start screen
+    x: 250,
+    y: 175,
+    label: "Star",
+    onClick: function() {
+        image(getImage("cute/Star"),135,150,100,100);
+        currentScene = 1;
+    }
+});
+
+var heartButton = new Button({ // fucntion to create the button on the start screen
+    x: 250,
+    y: 250,
+    label: "Heart",
+    onClick: function() {
+        image(getImage("space/healthheart"),135,150,100,100);
+        currentScene = 1;
+    }
+});
+
+ 
+var gameScreen = function() // function to display everything that shows up when the current scene is 1 
+{
+    background(0, 0, 0);
+    rockButton.draw();
+    starButton.draw();
+    heartButton.draw();
+    
+
+     
+};
+
+var startButton = new Button({ // fucntion to create the button on the start screen
+    x: 125,
+    y: 315,
+    label: "Play Game",
+    onClick: function() {
+        gameScreen();
+        currentScene = 1;
+    }
+});
+
+
+
+mouseClicked = function() { // function that makes all the mouse clicks work
+  if (currentScene === 0)
+  {  
+      startButton.handleMouseClick();
+  }
+  else if (currentScene === 1)
+  {
+      rockButton.handleMouseClick();
+      starButton.handleMouseClick();
+      heartButton.handleMouseClick();
+  }
+};
+
+
+var splash = function() // function to draw everything on start screen
+{
+    background(3, 110, 240);
+    textSize(20);
+    text("Rock, Paper, Scissors Game", 70, 100);
+    drawBitmoji(100,190,125,100);
+    drawBitmoji1(300,168,105,100);
+    startButton.draw();
+};  
+
+
+splash(); 
