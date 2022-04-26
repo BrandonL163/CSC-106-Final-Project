@@ -133,16 +133,16 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
         
         if(computer_Choice === 1) {
             fill(255, 0, 0);
-            text("There is a tie", 100, 100);
+            decision = "There is a tie";
             
         }
         if(computer_Choice === 2) {
             fill(255, 0, 0);
-            text("You win", 100, 100);
+            decision = "You win";
         }
         if(computer_Choice === 3){
             fill(255, 0, 0);
-            text("You Lose", 100, 100);
+            decision = "You lose";
             currentScene = 0;
             splash();
         }
@@ -222,6 +222,14 @@ mouseClicked = function() { // function that makes all the mouse clicks work
 
 
 
-
+draw = function() {
+   if (currentScene === 1){ 
+    
+    fill(0, 0, 0);
+    rect(100,100, 110, 20);
+    fill(255, 0, 0);
+    text(decision, 100, 100);
+    }
+};
 
 splash(); 
