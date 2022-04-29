@@ -6,6 +6,8 @@ var computer_Choice = round(random(1,3)); // 1 = rock 2 = star 3 = heart
 var decision;
 var splash;
 var instructionScreen;
+var losingScreen;
+var player_Choice;
 
 var drawBitmojiHead = function (xPos, yPos, bitmojiHeight) // function to draw bitmoji head
 {
@@ -133,6 +135,7 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
         textSize(15);
         image(getImage("cute/Rock"),135,150,100,100);
         currentScene = 1;
+        player_Choice = 1;
         
         if(computer_Choice === 1) {
             fill(255, 0, 0);
@@ -142,24 +145,26 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
             text("CPU's Choice:", 10, 130);
             image(getImage("cute/Rock"), 16, 150, 100,100);
             
+            
         }
         if(computer_Choice === 2) {
-            fill(255, 0, 0);
-            decision = "You win";
-            fill(255, 255, 255);
-            textSize(15);
-            text("CPU's Choice:", 10, 130);
-            image(getImage("cute/Star"), 16, 150, 100, 100);
-        }
-        if(computer_Choice === 3){
             fill(255, 0, 0);
             decision = "You lose";
             fill(255, 255, 255);
             textSize(15);
             text("CPU's Choice:", 10, 130);
+            image(getImage("cute/Star"), 16, 150, 100, 100);
+            currentScene = 3;
+            losingScreen();
+        }
+        if(computer_Choice === 3){
+            fill(255, 0, 0);
+            decision = "You win";
+            fill(255, 255, 255);
+            textSize(15);
+            text("CPU's Choice:", 10, 130);
             image(getImage("space/healthheart"), 16, 150, 100, 100);
-            currentScene = 0;
-            splash();
+            
         }
     }
 });
@@ -171,6 +176,7 @@ var starButton = new Button({ // fucntion to create the button on the start scre
     onClick: function() {
         image(getImage("cute/Star"),135,150,100,100);
         currentScene = 1;
+        player_Choice = 2;
       if(computer_Choice === 1) {
             fill(255, 0, 0);
             decision = "You win";
@@ -195,8 +201,8 @@ var starButton = new Button({ // fucntion to create the button on the start scre
             textSize(15);
             text("CPU's Choice:", 10, 130);
             image(getImage("space/healthheart"), 16, 150, 100, 100);
-            currentScene = 0;
-            splash();
+            currentScene = 3;
+            losingScreen();
         }
     }
 });
@@ -208,6 +214,7 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
     onClick: function() {
         image(getImage("space/healthheart"),135,150,100,100);
         currentScene = 1;
+        player_Choice = 3;
        if(computer_Choice === 1) {
             fill(255, 0, 0);
             decision = "You lose";
@@ -215,8 +222,8 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
             textSize(15);
             text("CPU's Choice:", 10, 130);
             image(getImage("cute/Rock"), 16, 150, 100,100);
-            currentScene = 0;
-            splash();
+            currentScene = 3;
+            losingScreen();
             
         }
         if(computer_Choice === 2) {
@@ -325,6 +332,31 @@ instructionScreen = function(){
     
 };
 
+losingScreen = function() { //Scene 3
+
+background(3, 110, 240);
+textSize(30);
+text("You lose", 100, 50);
+returnButton.draw();
+if (computer_Choice === 1 && player_Choice === 3){
+    fill(255, 255, 255);
+    text("CPU Chose", 100, 93);
+    image(getImage("cute/Rock"), 100, 100, 100, 100);
+}
+if (computer_Choice === 2 && player_Choice === 1){
+    fill(255, 255, 255);
+    text("CPU Chose", 100, 93);
+    image(getImage("cute/Star"), 100, 100, 100, 100);
+}
+if (computer_Choice === 3 && player_Choice === 2){
+    fill(255, 255, 255);
+    text("CPU Chose", 100, 93);
+    image(getImage("space/healthheart"), 100, 130, 100, 100);
+}
+
+
+};
+
 mouseClicked = function() { // function that makes all the mouse clicks work
   if (currentScene === 0)
   {  
@@ -341,6 +373,9 @@ mouseClicked = function() { // function that makes all the mouse clicks work
       computer_Choice = round(random(0.5,3.4));  // get new computer choice
   }
   if (currentScene === 2){
+      returnButton.handleMouseClick();
+  }
+  if (currentScene === 3){
       returnButton.handleMouseClick();
   }
 };
