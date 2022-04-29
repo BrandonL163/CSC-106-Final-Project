@@ -131,7 +131,6 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
     onClick: function() {
         fill(255, 255, 255);
         textSize(15);
-        text("Your Choice:", 135, 150);
         image(getImage("cute/Rock"),135,150,100,100);
         currentScene = 1;
         
@@ -140,7 +139,7 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
             decision = "There is a tie";
             fill(255, 255, 255);
             textSize(15);
-            text("CPU's Choice:", 10, 150);
+            text("CPU's Choice:", 10, 130);
             image(getImage("cute/Rock"), 16, 150, 100,100);
             
         }
@@ -149,7 +148,7 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
             decision = "You win";
             fill(255, 255, 255);
             textSize(15);
-            text("CPU's Choice:", 10, 150);
+            text("CPU's Choice:", 10, 130);
             image(getImage("cute/Star"), 16, 150, 100, 100);
         }
         if(computer_Choice === 3){
@@ -157,7 +156,7 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
             decision = "You lose";
             fill(255, 255, 255);
             textSize(15);
-            text("CPU's Choice:", 10, 150);
+            text("CPU's Choice:", 10, 130);
             image(getImage("space/healthheart"), 16, 150, 100, 100);
             currentScene = 0;
             splash();
@@ -172,7 +171,33 @@ var starButton = new Button({ // fucntion to create the button on the start scre
     onClick: function() {
         image(getImage("cute/Star"),135,150,100,100);
         currentScene = 1;
-        
+      if(computer_Choice === 1) {
+            fill(255, 0, 0);
+            decision = "You win";
+            fill(255, 255, 255);
+            textSize(15);
+            text("CPU's Choice:", 20, 130);
+            image(getImage("cute/Rock"), 16, 150, 100,100);
+            
+        }
+        if(computer_Choice === 2) {
+            fill(255, 0, 0);
+            decision = "There is a tie";
+            fill(255, 255, 255);
+            textSize(15);
+            text("CPU's Choice:", 10, 130);
+            image(getImage("cute/Star"), 16, 150, 100, 100);
+        }
+        if(computer_Choice === 3){
+            fill(255, 0, 0);
+            decision = "You lose";
+            fill(255, 255, 255);
+            textSize(15);
+            text("CPU's Choice:", 10, 130);
+            image(getImage("space/healthheart"), 16, 150, 100, 100);
+            currentScene = 0;
+            splash();
+        }
     }
 });
 
@@ -183,6 +208,49 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
     onClick: function() {
         image(getImage("space/healthheart"),135,150,100,100);
         currentScene = 1;
+       if(computer_Choice === 1) {
+            fill(255, 0, 0);
+            decision = "You lose";
+            fill(255, 255, 255);
+            textSize(15);
+            text("CPU's Choice:", 10, 130);
+            image(getImage("cute/Rock"), 16, 150, 100,100);
+            currentScene = 0;
+            splash();
+            
+        }
+        if(computer_Choice === 2) {
+            fill(255, 0, 0);
+            decision = "You win";
+            fill(255, 255, 255);
+            textSize(15);
+            text("CPU's Choice:", 10, 130);
+            image(getImage("cute/Star"), 16, 150, 100, 100);
+        }
+        if(computer_Choice === 3){
+            fill(255, 0, 0);
+            decision = "There is a tie";
+            fill(255, 255, 255);
+            textSize(15);
+            text("CPU's Choice:", 10, 130);
+            image(getImage("space/healthheart"), 16, 150, 100, 100);
+            
+        }  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 });
 
