@@ -1,5 +1,4 @@
 var currentScene = 0;
-
 var player_Score = 0;
 var computer_Score = 0;
 var computer_Choice = round(random(1,3)); // 1 = rock 2 = star 3 = heart
@@ -17,8 +16,6 @@ noStroke();
 fill(255,224,189);
 ellipse(xPos,yPos,bitmojiHeight/150*83,bitmojiHeight/150*100); //head
 fill(255, 255, 255);
-arc(xPos+(bitmojiHeight/150*42),yPos+(bitmojiHeight/150*37),bitmojiHeight/150*20,bitmojiHeight/150*55,bitmojiHeight/150*0,bitmojiHeight/150*361); // right chisel
-arc(xPos-(bitmojiHeight/150*42),yPos+(bitmojiHeight/150*37),bitmojiHeight/150*20,bitmojiHeight/150*55,bitmojiHeight/150*0,bitmojiHeight/150*361); //left chisel
 fill(242, 230, 230); //hat color
 quad(xPos-(bitmojiHeight/150*44),yPos,xPos-(bitmojiHeight/150*37),yPos-(bitmojiHeight/150*32),xPos-(bitmojiHeight/150*10),yPos-(bitmojiHeight/150*50),xPos-(bitmojiHeight/150*30),yPos-(bitmojiHeight/150*12)); //left hat
 quad(xPos+(bitmojiHeight/150*49),yPos,xPos+(bitmojiHeight/150*35),yPos-(bitmojiHeight/150*32),xPos+(bitmojiHeight/150*13),yPos-(bitmojiHeight/150*50),xPos+(bitmojiHeight/150*35),yPos-(bitmojiHeight/150*12)); //right hat
@@ -57,8 +54,6 @@ var drawBitmoji1 = function(xPos,yPos,bheight){
         fill(255, 244, 189);
         ellipse(xPos+(bheight/100*0),yPos+(bheight/100*0),bheight/100*83,bheight/100*100);
         fill(255, 255, 255);
-        arc(xPos-(bheight/100*42),yPos+(bheight/100*37),bheight/100*28,bheight/100*55,0,361);
-        arc(xPos+(bheight/100*42), yPos+(bheight/100*37),bheight/100*28,bheight/100*55,0,361         );
         fill(133, 24, 24);
         quad(xPos-(bheight/100*50),yPos-(bheight/100*10),xPos-(bheight/100*37),yPos-(bheight         /100*32),xPos-(bheight/100*10),yPos-(bheight/100*50),xPos-(bheight/100*30),yPos              -(bheight/100*1));
         quad(xPos+(bheight/100*49),yPos-(bheight/100*2),xPos+(bheight/100*34),yPos-(bheight          /100*32),xPos+(bheight/100*13),yPos-(bheight/100*50),xPos+(bheight/100*35),yPos              +(bheight/100*0));
@@ -72,7 +67,7 @@ var drawBitmoji1 = function(xPos,yPos,bheight){
         ellipse(xPos-(bheight/100*10),yPos+(bheight/100*10),bheight/100*6,bheight/100*4);
         ellipse(xPos+(bheight/100*17),yPos+(bheight/100*10),bheight/100*6,bheight/100*4);
         fill(255, 244, 189);
-        bezier(xPos+(bheight/100*0),yPos+(bheight/100*13),xPos+(bheight/100*21),yPos+(bheight         /100*19),xPos-(bheight/100*8),yPos+(bheight/100*28),xPos-(bheight/100*4),yPos                +(bheight/100*24));
+        bezier(xPos+(bheight/100*0),yPos+(bheight/100*13),xPos+(bheight/100*21),yPos                +(bheight/100*19),xPos-(bheight/100*8),yPos+(bheight/100*28),xPos-(bheight/100*4            ),yPos+(bheight/100*24));
         fill(255,255,255);
         arc(xPos+(bheight/100*2),yPos+(bheight/100*29),bheight/100*30,bheight/100*13,1,180);
         line(xPos-(bheight/100*14),yPos+(bheight/100*28),xPos+(bheight/100*16),yPos+(bheight         /100*28));
@@ -103,7 +98,7 @@ var Button = function (config) { //constructor function for buttons
     this.height = config.height || 50;
     this.label = config.label || "Click";
     this.onClick = config.onClick || function() {};
-    this.color = config.color || color(25, 222, 22);
+    this.color = config.color || color(255, 0, 0);
 };
 
 Button.prototype.draw = function() { // function to draw button
@@ -299,7 +294,7 @@ var gameScreen = function() // function to display everything that shows up when
 
 secondLevel = function(){
 
- background(255, 255, 255);
+ background(0, 0, 0);
     fill(255, 0, 0);
     text("Level 2", 300, 50);
     rockButton.draw();
@@ -337,25 +332,26 @@ var returnButton = new Button({ // Function to return from the instruction scree
     onClick: function() {
         splash();
         currentScene = 0;
+    player_Score = 0;
     }
 });
 youWin = function(){
     
-background(3, 110, 240);
+background(94, 98, 102);
 fill(255, 255, 255);
 textSize(20);
 text("Congratulations from Aidan and Brandon!\n You won our rock, star, heart game\n by beating the CPU in a game to the \nbest of 3!", 26, 30);
 fill(255, 255, 255);
 text("Yay!", 175, 255);
-drawBitmoji(137, 300, 92);
-drawBitmoji1(238, 300, 50);
+drawBitmoji(100, 200, 149);
+drawBitmoji1(300, 200, 100);
 returnButton.draw();
 
 };
 
  splash = function() // function to draw everything on start screen
 {
-    background(3, 110, 240);
+    background(94, 98, 102);
     textSize(20);
     text("Rock, Paper, Scissors Game", 70, 100);
     drawBitmoji(100,190,125,100);
@@ -381,7 +377,7 @@ instructionScreen = function(){
 
 losingScreen = function() { //Scene 3
 
-background(3, 110, 240);
+background(4, 110, 240);
 textSize(30);
 text("You lose", 100, 50);
 returnButton.draw();
