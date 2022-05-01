@@ -8,6 +8,8 @@ var splash;
 var instructionScreen;
 var losingScreen;
 var player_Choice;
+var secondLevel;
+var youWin;
 
 var drawBitmojiHead = function (xPos, yPos, bitmojiHeight) // function to draw bitmoji head
 {
@@ -158,13 +160,19 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
             losingScreen();
         }
         if(computer_Choice === 3){
+            player_Score++;
             fill(255, 0, 0);
             decision = "You win";
             fill(255, 255, 255);
             textSize(15);
             text("CPU's Choice:", 10, 130);
             image(getImage("space/healthheart"), 16, 150, 100, 100);
-            
+            if(player_Score >= 2){
+                youWin();
+                currentScene = 11;
+            }else{
+            secondLevel();
+            }
         }
     }
 });
@@ -178,12 +186,19 @@ var starButton = new Button({ // fucntion to create the button on the start scre
         currentScene = 1;
         player_Choice = 2;
       if(computer_Choice === 1) {
+            player_Score++;
             fill(255, 0, 0);
             decision = "You win";
             fill(255, 255, 255);
             textSize(15);
             text("CPU's Choice:", 20, 130);
             image(getImage("cute/Rock"), 16, 150, 100,100);
+            if(player_Score >= 2){
+                youWin();
+                currentScene = 11;
+            }else{
+            secondLevel();
+            }
             
         }
         if(computer_Choice === 2) {
@@ -227,12 +242,19 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
             
         }
         if(computer_Choice === 2) {
+            player_Score++;
             fill(255, 0, 0);
             decision = "You win";
             fill(255, 255, 255);
             textSize(15);
             text("CPU's Choice:", 10, 130);
             image(getImage("cute/Star"), 16, 150, 100, 100);
+            if(player_Score >= 2){
+                youWin();
+                currentScene = 11;
+            }else{
+            secondLevel();
+            }
         }
         if(computer_Choice === 3){
             fill(255, 0, 0);
@@ -275,6 +297,18 @@ var gameScreen = function() // function to display everything that shows up when
      
 };
 
+secondLevel = function(){
+
+ background(255, 255, 255);
+    fill(255, 0, 0);
+    text("Level 2", 300, 50);
+    rockButton.draw();
+    starButton.draw();
+    heartButton.draw();
+    
+};
+
+
 var startButton = new Button({ // fucntion to create the button on the start screen
     x: 34,
     y: 315,
@@ -305,6 +339,19 @@ var returnButton = new Button({ // Function to return from the instruction scree
         currentScene = 0;
     }
 });
+youWin = function(){
+    
+background(3, 110, 240);
+fill(255, 255, 255);
+textSize(20);
+text("Congratulations from Aidan and Brandon!\n You won our rock, star, heart game\n by beating the CPU in a game to the \nbest of 3!", 26, 30);
+fill(255, 255, 255);
+text("Yay!", 175, 255);
+drawBitmoji(137, 300, 92);
+drawBitmoji1(238, 300, 50);
+returnButton.draw();
+
+};
 
  splash = function() // function to draw everything on start screen
 {
@@ -326,8 +373,8 @@ instructionScreen = function(){
     text('When you click the play game button you will\n be sent to the level one screen.', 10, 92); 
     text("You can click one of the buttons located on the right\n side of your screen", 10, 140);
     text("The CPU will generate their choice. If you win you \nwill be sent to the level two screen.", 10, 188);
-    text("If you win there you will be sent to the level three \nscreen. If you lose you will be sent back to the \nstarting screen.", 10, 236);
-    text("If you tie with the CPU you will also be sent back to \nthe starting screen.", 10, 310); 
+    text("If you win at level 2, that means you won the\n best of 3.\n You will be sent to the final winning screen \nif you win here", 10, 236);
+    
     returnButton.draw();
     
 };
@@ -378,6 +425,9 @@ mouseClicked = function() { // function that makes all the mouse clicks work
   if (currentScene === 3){
       returnButton.handleMouseClick();
   }
+  if (currentScene === 11){
+      returnButton.handleMouseClick();
+  }
 };
 
 
@@ -392,5 +442,6 @@ draw = function() {
     
     }
 };
+
 
 splash(); 
