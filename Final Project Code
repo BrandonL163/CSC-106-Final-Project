@@ -128,6 +128,8 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
     y: 100,
     label: "Rock",
     onClick: function() {
+        fill(0, 0, 0);
+        rect(10, 162, 223, 200);
         fill(255, 255, 255);
         textSize(15);
         image(getImage("cute/Rock"),135,150,100,100);
@@ -177,6 +179,8 @@ var starButton = new Button({ // fucntion to create the button on the start scre
     y: 175,
     label: "Star",
     onClick: function() {
+        fill(0, 0, 0);
+        rect(10, 151, 223, 226);
         image(getImage("cute/Star"),135,150,100,100);
         currentScene = 1;
         player_Choice = 2;
@@ -222,6 +226,8 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
     y: 250,
     label: "Heart",
     onClick: function() {
+        fill(0, 0, 0);
+        rect(10, 144, 223, 228);
         image(getImage("space/healthheart"),135,150,100,100);
         currentScene = 1;
         player_Choice = 3;
