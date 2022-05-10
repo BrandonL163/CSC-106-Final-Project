@@ -1,3 +1,5 @@
+//Game functions like rock paper scissors, rock beats heart, heart beats star, star beats scissors
+//Creating global variables that will be used throughout the program
 var currentScene = 0;
 var player_Score = 0;
 var computer_Score = 0;
@@ -10,37 +12,38 @@ var player_Choice;
 var secondLevel;
 var youWin;
 
+//Aidans bitmoji function
 var drawBitmojiHead = function (xPos, yPos, bitmojiHeight) // function to draw bitmoji head
 {
-noStroke();
-fill(255,224,189);
-ellipse(xPos,yPos,bitmojiHeight/150*83,bitmojiHeight/150*100); //head
-fill(255, 255, 255);
-fill(242, 230, 230); //hat color
-quad(xPos-(bitmojiHeight/150*44),yPos,xPos-(bitmojiHeight/150*37),yPos-(bitmojiHeight/150*32),xPos-(bitmojiHeight/150*10),yPos-(bitmojiHeight/150*50),xPos-(bitmojiHeight/150*30),yPos-(bitmojiHeight/150*12)); //left hat
-quad(xPos+(bitmojiHeight/150*49),yPos,xPos+(bitmojiHeight/150*35),yPos-(bitmojiHeight/150*32),xPos+(bitmojiHeight/150*13),yPos-(bitmojiHeight/150*50),xPos+(bitmojiHeight/150*35),yPos-(bitmojiHeight/150*12)); //right hat
-rect(xPos-(bitmojiHeight/150*40),yPos-(bitmojiHeight/150*20),bitmojiHeight/150*82,bitmojiHeight/150*13,bitmojiHeight/150*10); //hat strap
-ellipse(xPos,yPos-(bitmojiHeight/150*40),bitmojiHeight/150*40,bitmojiHeight/150*18); //top head
-fill(184, 151, 120);
-rect(xPos-(bitmojiHeight/150*24),yPos-(bitmojiHeight/150*32),bitmojiHeight/150*50,bitmojiHeight/150*15); // hair in hat
-fill(61, 103, 29);
-ellipse(xPos-(bitmojiHeight/150*15),yPos,bitmojiHeight/150*15,bitmojiHeight/150*10); //left eye    
-fill(61,103,29); // eyes
-ellipse(xPos+(bitmojiHeight/150*15),yPos,bitmojiHeight/150*15,bitmojiHeight/150*10); // eye color
-fill(255,224,189); //nose color
-stroke(0, 0, 0); // nose outline
-bezier(xPos,yPos,xPos+(bitmojiHeight/150*21),yPos+(bitmojiHeight/150*22),xPos-(bitmojiHeight/150*8),yPos+(bitmojiHeight/150*20),xPos-(bitmojiHeight/150*4),yPos+(bitmojiHeight/150*15)); // nose
-arc(xPos+(bitmojiHeight/150*2),yPos+(bitmojiHeight/150*25),bitmojiHeight/150*30,bitmojiHeight/150*13,1,180);
+    noStroke();
+    fill(255,224,189);
+    ellipse(xPos,yPos,bitmojiHeight/150*83,bitmojiHeight/150*100); //head
+    fill(255, 255, 255);
+    fill(242, 230, 230); //hat color
+    quad(xPos-(bitmojiHeight/150*44),yPos,xPos-(bitmojiHeight/150*37),yPos-(bitmojiHeight       /150*32),xPos-(bitmojiHeight/150*10),yPos-(bitmojiHeight/150*50),xPos-(bitmojiHeight/150     *30),yPos-(bitmojiHeight/150*12)); //left hat
+    quad(xPos+(bitmojiHeight/150*49),yPos,xPos+(bitmojiHeight/150*35),yPos-(bitmojiHeight       /150*32),xPos+(bitmojiHeight/150*13),yPos-(bitmojiHeight/150*50),xPos+(bitmojiHeight/150     *35),yPos-(bitmojiHeight/150*12)); //right hat
+    rect(xPos-(bitmojiHeight/150*40),yPos-(bitmojiHeight/150*20),bitmojiHeight/150*82           ,bitmojiHeight/150*13,bitmojiHeight/150*10); //hat strap
+    ellipse(xPos,yPos-(bitmojiHeight/150*40),bitmojiHeight/150*40,bitmojiHeight/150*18);        //top head
+    fill(184, 151, 120);
+    rect(xPos-(bitmojiHeight/150*24),yPos-(bitmojiHeight/150*32),bitmojiHeight/150*50           ,bitmojiHeight/150*15); // hair in hat
+    fill(61, 103, 29);
+    ellipse(xPos-(bitmojiHeight/150*15),yPos,bitmojiHeight/150*15,bitmojiHeight/150*10);        //left eye    
+    fill(61,103,29); // eyes
+    ellipse(xPos+(bitmojiHeight/150*15),yPos,bitmojiHeight/150*15,bitmojiHeight/150*10); //     eye color
+    fill(255,224,189); //nose color
+    stroke(0, 0, 0); // nose outline
+    bezier(xPos,yPos,xPos+(bitmojiHeight/150*21),yPos+(bitmojiHeight/150*22),xPos-(bitmojiHeight/150*8),yPos+(bitmojiHeight/150*20),xPos-(bitmojiHeight/150*4),yPos+(bitmojiHeight/150*15)); // nose
+    arc(xPos+(bitmojiHeight/150*2),yPos+(bitmojiHeight/150*25),bitmojiHeight/150*30,bitmojiHeight/150*13,1,180);
 };
 
 var drawBitmojiBody = function (xPos, yPos, bitmojiHeight){
-fill(0, 0, 0);
-rect(xPos-(bitmojiHeight/150*50),yPos+(bitmojiHeight/150*50),bitmojiHeight/150*100,bitmojiHeight/150*50);
-rect(xPos-(bitmojiHeight/150*50),yPos+(bitmojiHeight/150*40),bitmojiHeight/150*20,bitmojiHeight/150*20);
-rect(xPos+(bitmojiHeight/150*30),yPos+(bitmojiHeight/150*40),bitmojiHeight/150*20,bitmojiHeight/150*20);
-fill(255, 255, 255);
-textSize(24);
-text("AC",xPos-(bitmojiHeight/150*17),yPos+(bitmojiHeight/150*65),bitmojiHeight/150*60,bitmojiHeight/150*60);
+    fill(0, 0, 0);
+    rect(xPos-(bitmojiHeight/150*50),yPos+(bitmojiHeight/150*50),bitmojiHeight/150*100          ,bitmojiHeight/150*50);
+    rect(xPos-(bitmojiHeight/150*50),yPos+(bitmojiHeight/150*40),bitmojiHeight/150*20           ,bitmojiHeight/150*20);
+    rect(xPos+(bitmojiHeight/150*30),yPos+(bitmojiHeight/150*40),bitmojiHeight/150*20           ,bitmojiHeight/150*20);
+    fill(255, 255, 255);
+    textSize(24);
+    text("AC",xPos-(bitmojiHeight/150*17),yPos+(bitmojiHeight/150*65),bitmojiHeight/150*60      ,bitmojiHeight/150*60);
 };
 
 var drawBitmoji = function(xPos, yPos, bitmojiHeight){ // function to draw bitmoji with 3 variables
@@ -48,6 +51,7 @@ var drawBitmoji = function(xPos, yPos, bitmojiHeight){ // function to draw bitmo
     drawBitmojiBody(xPos, yPos, bitmojiHeight);
 };
 
+//Brandon's bitmoji function
 var drawBitmoji1 = function(xPos,yPos,bheight){
     var drawBitmojiHead1 = function(){
         noStroke();
@@ -89,8 +93,9 @@ drawBitmojiHead1();
 drawBitmojiBody1();
 
 
-}; // brandon bitmoji function
+}; 
 
+//Pasted in khan button class
 var Button = function (config) { //constructor function for buttons
     this.x = config.x || 0;
     this.y = config.y || 0;
@@ -122,12 +127,13 @@ Button.prototype.handleMouseClick = function() { // function to make click work 
         this.onClick();
     }
 };
-
+//Creating the rock button that is visible and adding function on the game screen
 var rockButton = new Button({ // fucntion to create the button on the start screen
     x: 250,
     y: 100,
     label: "Rock",
     onClick: function() {
+        //When the button is pressed, it displays an image of a rock and sets the player_cho         ice variable to 1
         fill(0, 0, 0);
         rect(10, 162, 223, 200);
         fill(255, 255, 255);
@@ -136,17 +142,17 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
         currentScene = 1;
         player_Choice = 1;
         
-        if(computer_Choice === 1) {
+        //Checking what the randomized computer_Choice variable is and deciding if the user         wins or loses the round
+        if(computer_Choice === 1) { // If computer chooses rock
             fill(255, 0, 0);
             decision = "There is a tie";
             fill(255, 255, 255);
             textSize(15);
             text("CPU's Choice:", 10, 130);
             image(getImage("cute/Rock"), 16, 150, 100,100);
-            
-            
         }
-        if(computer_Choice === 2) {
+        
+        if(computer_Choice === 2) { // If the computer chooses star
             fill(255, 0, 0);
             decision = "You lose";
             fill(255, 255, 255);
@@ -156,7 +162,8 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
             currentScene = 3;
             losingScreen();
         }
-        if(computer_Choice === 3){
+        
+        if(computer_Choice === 3){ // If the computer chooses heart
             player_Score++;
             fill(255, 0, 0);
             decision = "You win";
@@ -173,7 +180,7 @@ var rockButton = new Button({ // fucntion to create the button on the start scre
         }
     }
 });
-
+//Creating and adding function to the star button that is displayed on the game screen
 var starButton = new Button({ // fucntion to create the button on the start screen
     x: 250,
     y: 175,
@@ -184,7 +191,7 @@ var starButton = new Button({ // fucntion to create the button on the start scre
         image(getImage("cute/Star"),135,150,100,100);
         currentScene = 1;
         player_Choice = 2;
-      if(computer_Choice === 1) {
+      if(computer_Choice === 1) { // If computer chooses rock
             player_Score++;
             fill(255, 0, 0);
             decision = "You win";
@@ -198,9 +205,9 @@ var starButton = new Button({ // fucntion to create the button on the start scre
             }else{
             secondLevel();
             }
-            
         }
-        if(computer_Choice === 2) {
+        
+        if(computer_Choice === 2) { // If computer chooses star
             fill(255, 0, 0);
             decision = "There is a tie";
             fill(255, 255, 255);
@@ -208,7 +215,8 @@ var starButton = new Button({ // fucntion to create the button on the start scre
             text("CPU's Choice:", 10, 130);
             image(getImage("cute/Star"), 16, 150, 100, 100);
         }
-        if(computer_Choice === 3){
+        
+        if(computer_Choice === 3){ // If computer chooses heart
             fill(255, 0, 0);
             decision = "You lose";
             fill(255, 255, 255);
@@ -231,7 +239,7 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
         image(getImage("space/healthheart"),135,150,100,100);
         currentScene = 1;
         player_Choice = 3;
-       if(computer_Choice === 1) {
+       if(computer_Choice === 1) {//If computer chooses rock
             fill(255, 0, 0);
             decision = "You lose";
             fill(255, 255, 255);
@@ -240,9 +248,9 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
             image(getImage("cute/Rock"), 16, 150, 100,100);
             currentScene = 3;
             losingScreen();
-            
         }
-        if(computer_Choice === 2) {
+        
+        if(computer_Choice === 2) { //If computer chooses star
             player_Score++;
             fill(255, 0, 0);
             decision = "You win";
@@ -257,7 +265,8 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
             secondLevel();
             }
         }
-        if(computer_Choice === 3){
+        
+        if(computer_Choice === 3){ //If computer chooses rock
             fill(255, 0, 0);
             decision = "There is a tie";
             fill(255, 255, 255);
@@ -266,25 +275,10 @@ var heartButton = new Button({ // fucntion to create the button on the start scr
             image(getImage("space/healthheart"), 16, 150, 100, 100);
             
         }  
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
 });
 
- 
+//Creating the screen that is shown when the user presses the "Play Game" button
 var gameScreen = function() // function to display everything that shows up when the current scene is 1 
 {
     background(0, 0, 0);
@@ -293,14 +287,11 @@ var gameScreen = function() // function to display everything that shows up when
     rockButton.draw();
     starButton.draw();
     heartButton.draw();
-    
-
-     
 };
-
+//Creating the second level screen that the user is sent to if the player wins the first round
 secondLevel = function(){
 
- background(0, 0, 0);
+    background(0, 0, 0);
     fill(255, 0, 0);
     text("Level 2", 300, 50);
     rockButton.draw();
@@ -310,7 +301,7 @@ secondLevel = function(){
 };
 
 
-var startButton = new Button({ // fucntion to create the button on the start screen
+var startButton = new Button({ // fucntion to create the button on the start that starts the game for the user
     x: 34,
     y: 315,
     label: "Play Game",
@@ -320,7 +311,7 @@ var startButton = new Button({ // fucntion to create the button on the start scr
     }
 });
 
-var instructionButton = new Button({ // Function to create the instructions button
+var instructionButton = new Button({ // Function to create the instructions button that will send the user to an instruction screen
 
     x: 218,
     y: 315,
@@ -341,17 +332,17 @@ var returnButton = new Button({ // Function to return from the instruction scree
     player_Score = 0;
     }
 });
-youWin = function(){
+youWin = function(){ // Function that creates the screen the user is sent to when the player_Score variable is equal to 2
     
-background(94, 98, 102);
-fill(255, 255, 255);
-textSize(20);
-text("Congratulations from Aidan and Brandon!\n You won our rock, star, heart game\n by beating the CPU in a game to the \nbest of 3!", 26, 30);
-fill(255, 255, 255);
-text("Yay!", 175, 255);
-drawBitmoji(100, 200, 149);
-drawBitmoji1(300, 200, 100);
-returnButton.draw();
+    background(94, 98, 102);
+    fill(255, 255, 255);
+    textSize(20);
+    text("Congratulations from Aidan and Brandon!\n You won our rock, star, heart game\n by beating the CPU in a game to the \nbest of 3!", 26, 30);
+    fill(255, 255, 255);
+    text("Yay!", 175, 255);
+    drawBitmoji(100, 200, 149);
+    drawBitmoji1(300, 200, 100);
+    returnButton.draw();
 
 };
 
@@ -366,7 +357,7 @@ returnButton.draw();
     instructionButton.draw();
 };  
 
-instructionScreen = function(){
+instructionScreen = function(){ //Function that creates the instruction screen for the user to learn how to play the game
     background(255, 168, 255);
     textSize(20);
     fill(255, 255, 255);
@@ -381,32 +372,36 @@ instructionScreen = function(){
     
 };
 
-losingScreen = function() { //Scene 3
+losingScreen = function() { //Creating the screen that the user is sent to when they lose
 
-background(4, 110, 240);
-textSize(30);
-text("You lose", 100, 50);
-returnButton.draw();
-if (computer_Choice === 1 && player_Choice === 3){
-    fill(255, 255, 255);
-    text("CPU Chose", 100, 93);
-    image(getImage("cute/Rock"), 100, 100, 100, 100);
-}
-if (computer_Choice === 2 && player_Choice === 1){
-    fill(255, 255, 255);
-    text("CPU Chose", 100, 93);
-    image(getImage("cute/Star"), 100, 100, 100, 100);
-}
-if (computer_Choice === 3 && player_Choice === 2){
-    fill(255, 255, 255);
-    text("CPU Chose", 100, 93);
-    image(getImage("space/healthheart"), 100, 130, 100, 100);
-}
+    background(4, 110, 240);
+    textSize(30);
+    text("You lose", 100, 50);
+    returnButton.draw();
+
+//Conditional If statements to tell the user they lose and to display what choice the computer chose
+    if (computer_Choice === 1 && player_Choice === 3){
+        fill(255, 255, 255);
+        text("CPU Chose", 100, 93);
+        image(getImage("cute/Rock"), 100, 100, 100, 100);
+    }
+    
+    if (computer_Choice === 2 && player_Choice === 1){
+        fill(255, 255, 255);
+        text("CPU Chose", 100, 93);
+        image(getImage("cute/Star"), 100, 100, 100, 100);
+    }
+    
+    if (computer_Choice === 3 && player_Choice === 2){
+        fill(255, 255, 255);
+        text("CPU Chose", 100, 93);
+        image(getImage("space/healthheart"), 100, 130, 100, 100);
+    }
 
 
 };
 
-mouseClicked = function() { // function that makes all the mouse clicks work
+mouseClicked = function() { // function that makes all the mouse clicks and buttons work on their correct scenes
   if (currentScene === 0)
   {  
       splash();
@@ -414,6 +409,7 @@ mouseClicked = function() { // function that makes all the mouse clicks work
       instructionButton.handleMouseClick();
       
   }
+  
    if (currentScene === 1)
   {
       rockButton.handleMouseClick();
@@ -421,27 +417,28 @@ mouseClicked = function() { // function that makes all the mouse clicks work
       heartButton.handleMouseClick();
       computer_Choice = round(random(0.5,3.4));  // get new computer choice
   }
+  
   if (currentScene === 2){
       returnButton.handleMouseClick();
   }
+  
   if (currentScene === 3){
       returnButton.handleMouseClick();
   }
+  
   if (currentScene === 11){
       returnButton.handleMouseClick();
   }
 };
 
 
-
+//Using the drae function to text if the user ties with the and to prompt them to rechoose either rock star or heart 
 draw = function() {
    if (currentScene === 1){ 
-    
-    fill(0, 0, 0);
-    rect(100,100, 110, 20);
-    fill(255, 0, 0);
-    text(decision, 100, 100);
-    
+        fill(0, 0, 0);
+        rect(100,100, 110, 20);
+        fill(255, 0, 0);
+        text(decision, 100, 100);
     }
 };
 
