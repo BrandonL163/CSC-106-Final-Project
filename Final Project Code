@@ -432,7 +432,7 @@ mouseClicked = function() { // function that makes all the mouse clicks and butt
 };
 
 
-//Using the drae function to text if the user ties with the and to prompt them to rechoose either rock star or heart 
+//Using the draw function to text if the user ties with the and to prompt them to rechoose either rock star or heart 
 draw = function() {
    if (currentScene === 1){ 
         fill(0, 0, 0);
